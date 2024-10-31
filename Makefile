@@ -1,8 +1,8 @@
-NAME = mnishell
+NAME = minishell
 
 SRC	= main.c src.c
 
-HEADERS	= ./include/minihell.h
+HEADERS	= ./include/minishell.h
 
 OBJS	= $(SRC:.c=.o)
 
@@ -11,11 +11,12 @@ CC	= cc
 RM	= rm -f
 
 CFLAGS	= -Wall -Wextra -Werror -I./include
+PFLAGS = -lreadline
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS) $(HEADERS)
-		$(CC) $(CFLAGS) $(PFLAGS) -o $(NAME) $(OBJS)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(PFLAGS)
 
 .c.o:
 		$(CC) $(CFLAGS) -c $< -o $@
